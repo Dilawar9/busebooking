@@ -2,14 +2,19 @@ const mongoose = require('mongoose');
 
 // Define user schema
 const busschema = new mongoose.Schema({
-    name: {
+    busename: {
         type: String,
         required: true
     },
     seats: {
-        type:Number,
+        type:Array,
         required: true,
     },
+    busenumber:{
+        type : Number ,
+        required:true, 
+        unique:true
+    }
     
 }, {timestamps: true});
 

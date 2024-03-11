@@ -2,21 +2,34 @@ const mongoose = require('mongoose');
 
 // Define user schema
 const availbusschema = new mongoose.Schema({
-    name: {
+    busenumber: {
         type: String,
-        required: true
+        required: true  
+
     },
-    email: {
+    from: {
         type: String,
         required: true,
-        unique: true
     },
-    photo: {
-        type: String
+    to: {
+        type: String,
+        required: true,
     },
-    password: {
+    departuretime: {
         type: String,
         required: true
+    },
+    date: { 
+        type: Date, default: Date.now 
+    },
+    price:{
+        type : Number ,
+        required :true
+    },
+    status:{
+        type : String,
+        enum: ['arrival', 'onroad', 'available'],
+        default: 'arrival'
     }
 }, {timestamps: true});
 

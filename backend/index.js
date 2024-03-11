@@ -4,7 +4,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
 const userRouter = require("./route/UserRoute");
-const busRouter=require("./route/BusRoute")
+const buseRouter = require("./route/BusRoute");
+const availbuseRouter = require("./route/AvailbusRoute")
 
 // Load environment variables from a .env file
 
@@ -17,7 +18,8 @@ app.use(express.json());
 // routes
 
 app.use("/user", userRouter);
-app.use("/bus", busRouter);
+app.use('/bus', buseRouter);
+app.use('/availbuse',availbuseRouter)
 
 
 

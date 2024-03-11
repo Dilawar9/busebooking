@@ -1,18 +1,8 @@
 const UserModel = require("../model/UserModel");
 const bcrypt = require('bcrypt');
 const {generateToken} = require("../helper/utils");
-const cloudinary = require("cloudinary");
-
-const dotenv = require('dotenv');
-dotenv.config();
 
 
-
-cloudinary.v2.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-});
 const signup = async (req, res) => {
     try {
         let { name, email, password } = req.body;
@@ -28,7 +18,7 @@ const signup = async (req, res) => {
         hashed = await bcrypt.hash(password, salt);
 
         //  Creating a new user with encrypted password and saving it to the database
-        const user = new User({ name, email, password: hashed });
+        const user = new UserModel({ name, email, password: hashed });
         await user.save();
 
         //  Sending back a response with a status of Created (201) and the newly created
