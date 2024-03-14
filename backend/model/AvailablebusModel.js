@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 // Define user schema
 const availbusschema = new mongoose.Schema({
     busenumber: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'bus',
         required: true  
 
     },

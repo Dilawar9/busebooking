@@ -7,8 +7,9 @@ const busschema = new mongoose.Schema({
         required: true
     },
     seats: {
-        type:Array,
-        required: true,
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'seat',
+        required: true
     },
     busenumber:{
         type : Number ,
